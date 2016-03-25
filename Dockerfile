@@ -33,9 +33,9 @@ RUN chef exec bundle install
 
 RUN /usr/bin/ssh-keygen -A
 
+USER root
+
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL="en_US.UTF-8" 
 ENV LANG="en_US.UTF-8" 
 ENV LANGUAGE="en_US.UTF-8"
-
-USER root
