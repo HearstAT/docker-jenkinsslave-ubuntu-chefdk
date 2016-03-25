@@ -25,10 +25,17 @@ VOLUME /var/lib/jenkins
 
 COPY Gemfile $JENKINS_HOME/Gemfile
 
+# Downgrade User
+USER jenkins
+
 WORKDIR $JENKINS_HOME
 RUN chef exec bundle install
+
+RUN /usr/bin/ssh-keygen -A
 
 RUN locale-gen en_US.UTF-8
 ENV LC_ALL="en_US.UTF-8" 
 ENV LANG="en_US.UTF-8" 
 ENV LANGUAGE="en_US.UTF-8"
+
+USER root
