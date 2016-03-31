@@ -8,7 +8,7 @@ for dir in ${DIRECTORYLIST}; do
   chmod -R 775 ${dir}
 done
 
-BINLIST='/usr/bin /usr/local/bin /etc/ssh/sshd_config /etc/ssh'
+BINLIST='/usr/bin /usr/local/bin /etc/ssh/sshd_config'
 
 for bin in ${BINLIST}; do
   chmod -R 777 ${bin}
