@@ -1,6 +1,6 @@
 # Ubuntu Jenkins Slave with ChefDK and development tools
 
-FROM hearstat/jenkins-slave-base
+FROM hearstat/jenkins-slave-base:trusty
 MAINTAINER Hearst Automation Team "atat@hearst.com"
 
 RUN cd /tmp ;\

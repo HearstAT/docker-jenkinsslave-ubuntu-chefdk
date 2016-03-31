@@ -10,12 +10,12 @@ This container is to be configured support chef cookbooks and ruby based buildin
 * Base Image: ubuntu:14.04
 * ChefDK Version: 0.11.2
 * Gems
-** berkshelf
-** test-kitchen
-** rubocop
-** rubocop-checkstyle_formatter
-** kitchen-docker
-** kitchen-ec2
+  * berkshelf
+  * test-kitchen
+  * rubocop
+  * rubocop-checkstyle_formatter
+  * kitchen-docker
+  * kitchen-ec2
 
 # Usage
 
