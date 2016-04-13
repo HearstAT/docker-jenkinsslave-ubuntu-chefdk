@@ -18,6 +18,11 @@ RUN rm -rf /tmp/* /var/tmp/*
 
 COPY Gemfile $JENKINS_HOME/Gemfile
 
+USER root
+#TODO the group ID for docker group on my Ubuntu is 999, therefore I can only run docker commands if I have same group id inside. 
+# Otherwise the socket file is not accessible.
+RUN groupadd -g 999 docker && usermod -a -G docker jenkins 
+
 # Downgrade User
 USER jenkins
 
