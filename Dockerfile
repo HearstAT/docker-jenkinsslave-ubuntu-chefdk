@@ -1,6 +1,6 @@
 # Ubuntu Jenkins Slave with ChefDK and development tools
 
-FROM hearstat/jenkins-slave-base:trusty
+FROM hearstat/jenkins-slave-base:xenial
 MAINTAINER Hearst Automation Team "atat@hearst.com"
 
 RUN cd /tmp ;\
@@ -8,6 +8,9 @@ RUN cd /tmp ;\
     dpkg -i chefdk.deb ;\
     rm -f /tmp/chefdk.deb
 
+RUN apt-get update &&\
+    apt-get install -y docker.io &&\
+    apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Setup directories and rights so Jenkins user can do things without sudo
 COPY systemconfig.sh /tmp/systemconfig.sh
