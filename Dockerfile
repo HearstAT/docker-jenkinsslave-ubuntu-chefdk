@@ -8,8 +8,13 @@ RUN cd /tmp ;\
     dpkg -i chefdk.deb ;\
     rm -f /tmp/chefdk.deb
 
+# Revert to Docker 1.9 until we upgrade the entire system
 RUN apt-get update &&\
-    apt-get install -y docker.io &&\
+    apt-get install -y apt-transport-https ca-certificates && \
+    apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+    echo "deb https://apt.dockerproject.org/repo/ ubuntu-wily main" | tee /etc/apt/sources.list.d/docker.list 
+RUN apt-get update &&\
+    apt-get install -y docker-engine=1.9.1-0~wily &&\
     apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Setup directories and rights so Jenkins user can do things without sudo
